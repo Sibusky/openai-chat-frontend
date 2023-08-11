@@ -7,6 +7,7 @@ import { Start } from './pages/start';
 import { Chat } from './pages/chat';
 import { PageNotFound } from './pages/page-not-found';
 import { auth } from './utils/auth';
+import { RequireAuth } from './utils/RequireAuth';
 
 import './App.css';
 
@@ -86,8 +87,20 @@ function App() {
         <Route path='/'>
           <Route element={<Layout />}>
             <Route index element={<Main />} />
-            <Route path='start' element={<Start handleLogin={handleLogin} handleRegister={handleRegister} isFetching={isFetching} />} />
-            <Route path='chat' element={<Chat />} />
+            <Route
+              path='start'
+              element={
+                <Start handleLogin={handleLogin} handleRegister={handleRegister} isFetching={isFetching} />
+              }
+            />
+            <Route
+              path='chat'
+              element={
+                <RequireAuth isLoggedIn={isLoggedIn}>
+                  <Chat />
+                </RequireAuth>
+              }
+            />
           </Route>
         </Route>
         <Route path='*' element={<PageNotFound />} />
