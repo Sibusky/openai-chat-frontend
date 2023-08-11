@@ -18,12 +18,8 @@ header {
 }
 
 .header__user-info {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    max-width: 500px;
-}
-
-.header__user-info p {
-    margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

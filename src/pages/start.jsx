@@ -4,6 +4,7 @@ import { Container } from '../components/container';
 import { Form } from '../components/form';
 import { useFormWithValidation } from '../hooks/useFormWithValidation';
 import { Spinner } from '../components/spinner';
+import image from '../images/image.png';
 
 export function Start({ handleLogin, handleRegister, isFetching, isLoggedIn }) {
   const { values, isValid, handleChange, resetForm } = useFormWithValidation();
@@ -17,6 +18,7 @@ export function Start({ handleLogin, handleRegister, isFetching, isLoggedIn }) {
   return (
     <Container>
       {isFetching ? <Spinner /> : null}
+      <img src={image} alt='Boy and girl' />
       <Form
         handleSubmit={(e) => {
           e.preventDefault();

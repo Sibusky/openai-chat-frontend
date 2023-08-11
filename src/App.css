@@ -23,12 +23,48 @@
 }
 
 main {
-  /* height: 100vh; */
-  /* overflow-y: scroll; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+form {
+  width: 366px;
+  margin: 24px 0;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #0085ff;
+  height: 43px;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+
+input::placeholder{
+  font-family: 'Roboto', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: normal;
+  text-rendering: optimizeLegibility;
+  text-decoration: none;
+  color: #AAA;
+  letter-spacing: 0;
 }
 
 button {
@@ -41,12 +77,29 @@ button:hover {
   opacity: 0.6;
 }
 
+.button_filled {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: normal;
+  text-rendering: optimizeLegibility;
+  text-decoration: none;
+  color: #fff;
+  letter-spacing: 0;
+  background-color: #0085ff;
+  height: 43px;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+}
+
 .layout {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 1024px;
+  width: 390px;
 }
 
 .text {
@@ -72,8 +125,6 @@ button:hover {
 .white {
   color: white;
 }
-
-
 
 .button_transparent {
   background-color: transparent;

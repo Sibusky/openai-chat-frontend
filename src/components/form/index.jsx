@@ -18,7 +18,7 @@ export function Form({
         <ul>
           <li>
             <input
-              className='text-input text'
+              className='text-input'
               readOnly={isFetching && true}
               id={`${className}-name`}
               type='text'
@@ -33,7 +33,7 @@ export function Form({
           </li>
           <li>
             <input
-              className='text-input text'
+              className='text-input'
               readOnly={isFetching && true}
               id={`${className}-password`}
               type='password'
