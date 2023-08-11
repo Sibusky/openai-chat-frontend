@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 import { format, isToday, isYesterday, toDate } from 'date-fns';
 
-export function Message({ date, question, response }) {
+export function Message({ id, date, question, response, deleteMessage }) {
 
   function getDate(timestamp) {
     const date = toDate(+timestamp);
@@ -28,7 +28,7 @@ export function Message({ date, question, response }) {
       <p>{question}</p>
       <p>GPT responded:</p>
       <p>{response}</p>
-      <button>Delete</button>
+      <button onClick={() => deleteMessage(id)}>Delete</button>
     </li>
   );
 }

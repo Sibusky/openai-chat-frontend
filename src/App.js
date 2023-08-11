@@ -20,10 +20,17 @@ function App() {
 
   useEffect(() => {
     if (isLoggedIn) {
+      setIsFetching(true);
       messagesApi
         .getAllMessages()
-        .then((messages) => setMessages(messages))
-        .catch((err) => console.log(err));
+        .then((messages) => {
+          setMessages(messages);
+          setIsFetching(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setIsFetching(false);
+        });
     }
   }, [isLoggedIn]);
 
@@ -33,7 +40,7 @@ function App() {
       .postMessage(request.requestInput)
       .then((message) => {
         setIsFetching(false);
-        setMessages([...messages, message])
+        setMessages([...messages, message]);
       })
       .catch((err) => {
         setIsFetching(false);
@@ -41,7 +48,16 @@ function App() {
       });
   }
 
-  console.log(messages)
+  function deleteMessage(id) {
+    messagesApi
+      .deleteMessage(id)
+      .then(() => {
+        setMessages((state) => state.filter((message) => message._id !== id));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   function handleLogOut() {
     localStorage.removeItem('jwt');
@@ -124,7 +140,12 @@ function App() {
               path='chat'
               element={
                 <RequireAuth isLoggedIn={isLoggedIn}>
-                  <Chat messages={messages} sendRequest={sendRequest} isFetching={isFetching} />
+                  <Chat
+                    messages={messages}
+                    sendRequest={sendRequest}
+                    isFetching={isFetching}
+                    deleteMessage={deleteMessage}
+                  />
                 </RequireAuth>
               }
             />

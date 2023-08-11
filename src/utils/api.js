@@ -27,6 +27,16 @@ class MessagesApi {
       body: JSON.stringify({ question: request }),
     }).then(checkResponse);
   }
+
+  deleteMessage(id) {
+    return fetch(`${this._baseUrl}/chat/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json',
+      },
+    }).then(checkResponse);
+  }
 }
 
 export const messagesApi = new MessagesApi({
