@@ -1,0 +1,29 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0085ff;
+  height: 95px;
+  width: 100%;
+  padding: 36px 24px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.header__content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.header__user-info {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 500px;
+}
+
+.header__user-info p {
+    margin-right: 20px;
+}

@@ -2,6 +2,6 @@ import React from 'react'
 
 export function Button({ text, type, isDisabled }) {
   return (
-    <button type={type} disabled={isDisabled}>{text}</button>
+    <button className='button_filled text' type={type} disabled={isDisabled}>{text}</button>
   )
 }

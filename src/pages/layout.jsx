@@ -4,7 +4,7 @@ import { Header } from '../components/header';
 
 export function Layout({ handleLogOut, currentUser, isLoggedIn }) {
   return (
-    <div>
+    <div className='layout'>
       <Header handleLogOut={handleLogOut} currentUser={currentUser} isLoggedIn={isLoggedIn} />
       <Outlet />
     </div>

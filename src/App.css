@@ -1,0 +1,81 @@
+.page {
+  background-color: #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 320px;
+  max-width: 1024px;
+  /* margin: 0 auto; */
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+main {
+  /* height: 100vh; */
+  /* overflow-y: scroll; */
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+button:hover {
+  opacity: 0.6;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 1024px;
+}
+
+.text {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: normal;
+  text-rendering: optimizeLegibility;
+  text-decoration: none;
+  color: #222;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: normal;
+}
+
+.white {
+  color: white;
+}
+
+
+
+.button_transparent {
+  background-color: transparent;
+  border: none;
+}

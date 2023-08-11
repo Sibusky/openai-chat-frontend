@@ -12,13 +12,13 @@ export function Form({
   buttonText,
   buttonType,
 }) {
-  console.log(isValid);
   return (
     <form id={`${className}-form`} onSubmit={handleSubmit}>
       <fieldset>
         <ul>
           <li>
             <input
+              className='text-input text'
               readOnly={isFetching && true}
               id={`${className}-name`}
               type='text'
@@ -33,6 +33,7 @@ export function Form({
           </li>
           <li>
             <input
+              className='text-input text'
               readOnly={isFetching && true}
               id={`${className}-password`}
               type='password'
@@ -46,11 +47,7 @@ export function Form({
           </li>
         </ul>
       </fieldset>
-      <Button
-        text={buttonText}
-        type={buttonType}
-        isDisabled={!isValid}
-      />
+      <Button text={buttonText} type={buttonType} isDisabled={!isValid} />
     </form>
   );
 }

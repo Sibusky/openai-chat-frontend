@@ -35,7 +35,7 @@ export function Start({ handleLogin, handleRegister, isFetching, isLoggedIn }) {
         buttonType='submit'
         className='login'
       />
-      <p>or sign up if you don’t have an account yet</p>
+      <p className='text'>or sign up if you don’t have an account yet</p>
       <Form
         handleSubmit={(e) => {
           e.preventDefault();
