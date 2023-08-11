@@ -17,7 +17,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({ _id: '', name: '' });
 
   function handleLogOut() {
-    // localStorage.removeItem('jwt');
+    localStorage.removeItem('jwt');
     setIsLoggedIn(false);
     setCurrentUser({
       _id: '',
