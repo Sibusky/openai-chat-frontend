@@ -7,6 +7,7 @@ import { Start } from './pages/start';
 import { Chat } from './pages/chat';
 import { PageNotFound } from './pages/page-not-found';
 import { auth } from './utils/auth';
+import { messagesApi } from './utils/api';
 import { RequireAuth } from './utils/RequireAuth';
 
 import './App.css';
@@ -15,6 +16,16 @@ function App() {
   const [isFetching, setIsFetching] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({ _id: '', name: '' });
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      messagesApi
+        .getAllMessages()
+        .then((messages) => setMessages(messages.reverse()))
+        .catch((err) => console.log(err));
+    }
+  }, [isLoggedIn]);
 
   function handleLogOut() {
     localStorage.removeItem('jwt');
@@ -97,7 +108,7 @@ function App() {
               path='chat'
               element={
                 <RequireAuth isLoggedIn={isLoggedIn}>
-                  <Chat />
+                  <Chat messages={messages}/>
                 </RequireAuth>
               }
             />
