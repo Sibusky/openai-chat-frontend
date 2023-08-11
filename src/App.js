@@ -34,6 +34,8 @@ function App() {
     }
   }, [isLoggedIn]);
 
+  console.log(isLoggedIn, 'isLoggedIn');
+
   function sendRequest(request) {
     setIsFetching(true);
     messagesApi
@@ -128,12 +130,17 @@ function App() {
     <div className='App'>
       <Routes>
         <Route path='/'>
-          <Route element={<Layout />}>
+          <Route element={<Layout handleLogOut={handleLogOut} currentUser={currentUser} isLoggedIn={isLoggedIn} />}>
             <Route index element={<Main />} />
             <Route
               path='start'
               element={
-                <Start handleLogin={handleLogin} handleRegister={handleRegister} isFetching={isFetching} />
+                <Start
+                  handleLogin={handleLogin}
+                  handleRegister={handleRegister}
+                  isFetching={isFetching}
+                  isLoggedIn={isLoggedIn}
+                />
               }
             />
             <Route
