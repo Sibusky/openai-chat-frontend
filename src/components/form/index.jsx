@@ -1,21 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import { Button } from '../button';
 import { auth } from '../../utils/auth';
+import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 
 export function Form({ className, buttonText, buttonType }) {
-  const [name, setName] = useState();
-  const [password, setPassword] = useState();
+  const [values, errors, isValid, handleChange, resetForm] = useFormWithValidation();
   const [isFetching, setIsFetching] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [getCurrentUser, setCurrentUser] = useState({ _id: '', name: '' });
-
-  function handleNameChange(e) {
-    setName(e.target.value);
-  }
-
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
-  }
+  const [currentUser, setCurrentUser] = useState({ _id: '', name: '' });
 
   function handleLogOut() {
     // localStorage.removeItem('jwt');
@@ -65,7 +57,7 @@ export function Form({ className, buttonText, buttonType }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleLogin({ name, password });
+    handleLogin(values);
   }
 
   return (
@@ -74,32 +66,34 @@ export function Form({ className, buttonText, buttonType }) {
         <ul>
           <li>
             <input
-              // readOnly={isFetching && true}
+              readOnly={isFetching && true}
               id={`${className}-name`}
               type='text'
               required
               minLength='2'
               maxLength='30'
               placeholder='Username'
-              onChange={handleNameChange}
-              value={name ?? ''}
+              name='name'
+              onChange={handleChange}
+              value={values.name ?? ''}
             />
           </li>
           <li>
             <input
-              // readOnly={isFetching && true}
+              readOnly={isFetching && true}
               id={`${className}-password`}
               type='password'
               required
               minLength='8'
               placeholder='Password'
-              onChange={handlePasswordChange}
-              value={password ?? ''}
+              name='password'
+              onChange={handleChange}
+              value={values.password ?? ''}
             />
           </li>
         </ul>
       </fieldset>
-      <Button text={buttonText} type={buttonType} />
+      <Button text={buttonText} type={buttonType} isDisabled={!isValid} />
     </form>
   );
 }
