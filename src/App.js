@@ -22,10 +22,26 @@ function App() {
     if (isLoggedIn) {
       messagesApi
         .getAllMessages()
-        .then((messages) => setMessages(messages.reverse()))
+        .then((messages) => setMessages(messages))
         .catch((err) => console.log(err));
     }
   }, [isLoggedIn]);
+
+  function sendRequest(request) {
+    setIsFetching(true);
+    messagesApi
+      .postMessage(request.requestInput)
+      .then((message) => {
+        setIsFetching(false);
+        setMessages([...messages, message])
+      })
+      .catch((err) => {
+        setIsFetching(false);
+        console.log(err);
+      });
+  }
+
+  console.log(messages)
 
   function handleLogOut() {
     localStorage.removeItem('jwt');
@@ -108,7 +124,7 @@ function App() {
               path='chat'
               element={
                 <RequireAuth isLoggedIn={isLoggedIn}>
-                  <Chat messages={messages}/>
+                  <Chat messages={messages} sendRequest={sendRequest} isFetching={isFetching} />
                 </RequireAuth>
               }
             />

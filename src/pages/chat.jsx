@@ -2,8 +2,17 @@ import React from 'react';
 import { Container } from '../components/container';
 import { Button } from '../components/button';
 import { Message } from '../components/message';
+import { useFormWithValidation } from '../hooks/useFormWithValidation';
 
-export function Chat({ messages }) {
+export function Chat({ messages, sendRequest, isFetching }) {
+  const { values, isValid, handleChange, resetForm } = useFormWithValidation();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    sendRequest(values);
+    resetForm();
+  }
+
   return (
     <Container>
       <ul className='chat__list'>
@@ -16,9 +25,19 @@ export function Chat({ messages }) {
           />
         ))}
       </ul>
-      <form>
-        <input />
-        <Button text='Send' type='submit' isDisabled={false} />
+      <form onSubmit={handleSubmit}>
+        <input
+            readOnly={isFetching && true}
+          id='request-input'
+          type='textarea'
+          required
+          minLength='3'
+          placeholder='Type your message here...'
+          name='requestInput'
+          onChange={handleChange}
+          value={values.requestInput ?? ''}
+        />
+        <Button text='Send' type='submit' isDisabled={!isValid} />
       </form>
     </Container>
   );
