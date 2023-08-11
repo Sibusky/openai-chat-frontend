@@ -3,9 +3,10 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { Container } from '../components/container';
 import { Form } from '../components/form';
 import { useFormWithValidation } from '../hooks/useFormWithValidation';
+import { Spinner } from '../components/spinner';
 
 export function Start({ handleLogin, handleRegister, isFetching, isLoggedIn }) {
-  const { values, handleChange, resetForm } = useFormWithValidation();
+  const { values, isValid, handleChange, resetForm } = useFormWithValidation();
 
   let location = useLocation();
 
@@ -15,6 +16,7 @@ export function Start({ handleLogin, handleRegister, isFetching, isLoggedIn }) {
 
   return (
     <Container>
+      {isFetching ? <Spinner /> : null}
       <Form
         handleSubmit={(e) => {
           e.preventDefault();
@@ -28,6 +30,7 @@ export function Start({ handleLogin, handleRegister, isFetching, isLoggedIn }) {
         password={values.loginPassword}
         handleChange={handleChange}
         isFetching={isFetching}
+        isValid={isValid}
         buttonText='Login'
         buttonType='submit'
         className='login'
@@ -46,6 +49,7 @@ export function Start({ handleLogin, handleRegister, isFetching, isLoggedIn }) {
         password={values.signupPassword}
         handleChange={handleChange}
         isFetching={isFetching}
+        isValid={isValid}
         buttonText='Sign up'
         buttonType='submit'
         className='signup'

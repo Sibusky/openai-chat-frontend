@@ -27,14 +27,11 @@ function App() {
           setMessages(messages);
           setIsFetching(false);
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
           setIsFetching(false);
         });
     }
   }, [isLoggedIn]);
-
-  console.log(isLoggedIn, 'isLoggedIn');
 
   function sendRequest(request) {
     setIsFetching(true);
@@ -51,13 +48,16 @@ function App() {
   }
 
   function deleteMessage(id) {
+    setIsFetching(true);
     messagesApi
       .deleteMessage(id)
       .then(() => {
         setMessages((state) => state.filter((message) => message._id !== id));
+        setIsFetching(false);
       })
       .catch((err) => {
         console.log(err);
+        setIsFetching(false);
       });
   }
 
@@ -72,6 +72,7 @@ function App() {
 
   const handleCheckToken = useCallback(() => {
     if (localStorage.getItem('jwt')) {
+      setIsFetching(true);
       let jwt = localStorage.getItem('jwt');
       auth
         .getCurrentUser(jwt)
@@ -79,12 +80,15 @@ function App() {
           const { _id, name } = res;
           setIsLoggedIn(true);
           setCurrentUser({ _id, name });
+          setIsFetching(false);
         })
         .catch((err) => {
           console.log(`Error: ${err}`);
           if (err === 401) {
             handleLogOut();
+            setIsFetching(false);
           }
+          setIsFetching(false);
         });
     } else {
       handleLogOut();
@@ -130,8 +134,10 @@ function App() {
     <div className='App'>
       <Routes>
         <Route path='/'>
-          <Route element={<Layout handleLogOut={handleLogOut} currentUser={currentUser} isLoggedIn={isLoggedIn} />}>
-            <Route index element={<Main />} />
+          <Route
+            element={<Layout handleLogOut={handleLogOut} currentUser={currentUser} isLoggedIn={isLoggedIn} />}
+          >
+            <Route index element={<Main isFetchin={isFetching} isLoggedIn={isLoggedIn} />} />
             <Route
               path='start'
               element={

@@ -7,13 +7,14 @@ export function Form({
   password,
   handleChange,
   isFetching,
+  isValid,
   className,
   buttonText,
   buttonType,
 }) {
-
+  console.log(isValid);
   return (
-    <form onSubmit={handleSubmit}>
+    <form id={`${className}-form`} onSubmit={handleSubmit}>
       <fieldset>
         <ul>
           <li>
@@ -45,7 +46,11 @@ export function Form({
           </li>
         </ul>
       </fieldset>
-      <Button text={buttonText} type={buttonType} isDisabled={false} />
+      <Button
+        text={buttonText}
+        type={buttonType}
+        isDisabled={!isValid}
+      />
     </form>
   );
 }
