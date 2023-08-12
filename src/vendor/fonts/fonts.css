@@ -2,30 +2,5 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: url('Roboto-Regular.woff2') format('woff2'),
-    url('Roboto-Regular.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  src: url('Roboto-Medium.woff2') format('woff2'),
-    url('Roboto-Medium.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  src: url('Roboto-Bold.woff2') format('woff2'),
-    url('Roboto-Bold.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 900;
-  src: url('Roboto-Black.woff2') format('woff2'),
-    url('Roboto-Black.woff') format('woff');
+  src: url('Roboto-Regular.woff2') format('woff2'), url('Roboto-Regular.woff') format('woff');
 }
