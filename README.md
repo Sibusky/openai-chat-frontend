@@ -7,7 +7,8 @@ This is the frontend part of the application that provides conversation with Ope
 Or you can start the application on localhost. To do that follow the instructions:
 
 1. Clone both the frontend and backend parts of the app.
-[Frontend](https://github.com/Sibusky/openai-chat-frontend)
+
+[Frontend](https://github.com/Sibusky/openai-chat-frontend)   
 [Backend](https://github.com/Sibusky/openai-chat-backend)
 
 To do that follow the links, and ```git clone``` main branches.
