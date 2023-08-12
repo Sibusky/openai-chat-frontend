@@ -8,7 +8,7 @@ Server is deployed and avalable via link:
 
 [https://openai-chat-backend.onrender.com](https://openai-chat-backend.onrender.com/start)
 
-Or you can start the application on localhost. To do that follow the instructions:
+Also you can start the application on localhost. To do that follow the instructions:
 
 1. Clone both the frontend and backend parts of the app.
 
