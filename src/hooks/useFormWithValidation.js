@@ -9,10 +9,9 @@ export function useFormWithValidation() {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-    const form = target.form.id
     setValues({ ...values, [name]: value });
     setErrors({ ...errors, [name]: target.validationMessage });
-    setIsValid(target.closest(`#${form}`).checkValidity()); // still does not work
+    setIsValid(target.closest('form').checkValidity()); // still does not work
   };
 
   const resetForm = useCallback(

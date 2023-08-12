@@ -27,6 +27,8 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  height: calc(100vh - 95px);
+  overflow: scroll;
 }
 
 ul {
@@ -46,16 +48,15 @@ fieldset {
   margin: 0;
 }
 
-input {
+input,
+textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #0085ff;
   height: 43px;
   box-sizing: border-box;
   margin-bottom: 12px;
-}
-
-input::placeholder{
+  resize: none;
   font-family: 'Roboto', Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -63,8 +64,12 @@ input::placeholder{
   line-height: normal;
   text-rendering: optimizeLegibility;
   text-decoration: none;
-  color: #AAA;
+  color: #222;
   letter-spacing: 0;
+}
+
+input::placeholder {
+  color: #aaa;
 }
 
 button {
@@ -116,6 +121,10 @@ button:hover {
   padding: 0;
 }
 
+.empty-text {
+  padding: 12px;
+}
+
 .title {
   font-weight: 400;
   font-size: 20px;
@@ -126,7 +135,48 @@ button:hover {
   color: white;
 }
 
+.red {
+  color: #f00;
+}
+
+.blue {
+  color: #0085ff;
+}
+
+.gray {
+  color: #aaa;
+}
+
 .button_transparent {
   background-color: transparent;
   border: none;
+}
+
+.request-input {
+  height: 100px;
+}
+
+.request-input::placeholder {
+  color: #aaa;
+}
+
+.chat-container {
+  height: calc(100vh - 95px - 203px);
+  overflow: scroll;
+}
+
+.message {
+  width: 366px;
+  box-sizing: border-box;
+  padding: 24px;
+  margin-top: 12px;
+  background-color: #f5f5f5;
+}
+
+.message li {
+  margin-bottom: 12px;
+}
+
+.message li:last-of-type {
+  margin-bottom: 0;
 }

@@ -3,7 +3,6 @@ import './styles.css';
 import { format, isToday, isYesterday, toDate } from 'date-fns';
 
 export function Message({ id, date, question, response, deleteMessage }) {
-
   function getDate(timestamp) {
     const date = toDate(+timestamp);
     if (isToday(date)) {
@@ -20,15 +19,27 @@ export function Message({ id, date, question, response, deleteMessage }) {
   }
 
   return (
-    <li>
-      <p>
-        {getDate(date)} {getTime(date)}
-      </p>
-      <p>You asked:</p>
-      <p>{question}</p>
-      <p>GPT responded:</p>
-      <p>{response}</p>
-      <button onClick={() => deleteMessage(id)}>Delete</button>
+    <li className='message'>
+      <ul>
+        <li>
+          <p className='text gray'>
+            {getDate(date)} {getTime(date)}
+          </p>
+        </li>
+        <li>
+          <p className='text blue'>You asked:</p>
+          <p className='text'>{question}</p>
+        </li>
+        <li>
+          <p className='text blue'>GPT responded:</p>
+          <p className='text'>{response}</p>
+        </li>
+        <li>
+          <button className='button_transparent text red' onClick={() => deleteMessage(id)}>
+            Delete
+          </button>
+        </li>
+      </ul>
     </li>
   );
 }

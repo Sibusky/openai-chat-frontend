@@ -17,24 +17,28 @@ export function Chat({ messages, sendRequest, isFetching, deleteMessage }) {
   return (
     <Container>
       {isFetching ? <Spinner /> : null}
-      {messages.length ? (
-        <ul className='chat__list'>
-          {messages.map((message) => (
-            <Message
-              key={message._id}
-              id={message._id}
-              date={message.date}
-              question={message.question}
-              response={message.response}
-              deleteMessage={deleteMessage}
-            />
-          ))}
-        </ul>
-      ) : (
-        <p>Your chat is empty. Send your first message to start a chat.</p>
-      )}
-      <form onSubmit={handleSubmit}>
-        <input
+      <div className='chat-container'>
+        {messages.length ? (
+          <ul className='chat-list'>
+            {messages.map((message) => (
+              <Message
+                key={message._id}
+                id={message._id}
+                date={message.date}
+                question={message.question}
+                response={message.response}
+                deleteMessage={deleteMessage}
+              />
+            ))}
+          </ul>
+        ) : (
+          <p className='empty-text text'>Your chat is empty. Send your first message to start a chat.</p>
+        )}
+      </div>
+
+      <form className='request-form' onSubmit={handleSubmit}>
+        <textarea
+          className='request-input'
           readOnly={isFetching && true}
           id='request-input'
           type='textarea'
