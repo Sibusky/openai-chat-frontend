@@ -68,6 +68,7 @@ function App() {
       _id: '',
       name: '',
     });
+    setMessages([]);
   }
 
   const handleCheckToken = useCallback(() => {
