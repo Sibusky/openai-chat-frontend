@@ -83,7 +83,7 @@ function App() {
           setIsFetching(false);
         })
         .catch((err) => {
-          console.log(`Error: ${err}`);
+          console.log(`Check token error: ${err}`);
           if (err === 401) {
             handleLogOut();
             setIsFetching(false);
@@ -111,7 +111,7 @@ function App() {
         setIsFetching(false);
       })
       .catch((err) => {
-        console.log(`Error: ${err}`);
+        console.log(`Login error: ${err}`);
         setIsFetching(false);
       });
   }
@@ -125,7 +125,7 @@ function App() {
         setIsFetching(false);
       })
       .catch((err) => {
-        console.log(`Ошибка: ${err}`);
+        console.log(`Registration error: ${err}`);
         setIsFetching(false);
       });
   }

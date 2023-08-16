@@ -10,7 +10,7 @@ class Auth {
 
   register(name, password) {
     return fetch(`${this._baseUrl}/`, {
-      method: 'PUT',
+      method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ class Auth {
 
   authorize(name, password) {
     return fetch(`${this._baseUrl}/`, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
