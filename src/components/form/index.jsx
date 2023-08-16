@@ -1,17 +1,21 @@
 import React from 'react';
 import { Button } from '../button';
+import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 
 export function Form({
-  handleSubmit,
-  name,
-  password,
-  handleChange,
+  handleFunction,
   isFetching,
-  isValid,
   className,
   buttonText,
   buttonType,
 }) {
+  const { values, errors, isValid, handleChange, resetForm } = useFormWithValidation();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    handleFunction({ name: values[`${className}Name`], password: values[`${className}Password`] });
+  }
+
   return (
     <form id={`${className}-form`} onSubmit={handleSubmit}>
       <fieldset>
@@ -28,7 +32,7 @@ export function Form({
               placeholder='Username'
               name={`${className}Name`}
               onChange={handleChange}
-              value={name ?? ''}
+              value={values[`${className}Name`] ?? ''}
             />
           </li>
           <li>
@@ -42,7 +46,7 @@ export function Form({
               placeholder='Password'
               name={`${className}Password`}
               onChange={handleChange}
-              value={password ?? ''}
+              value={values[`${className}Password`] ?? ''}
             />
           </li>
         </ul>

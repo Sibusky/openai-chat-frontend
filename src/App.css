@@ -82,22 +82,7 @@ button:hover {
   opacity: 0.6;
 }
 
-.button_filled {
-  font-family: 'Roboto', Arial, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: normal;
-  text-rendering: optimizeLegibility;
-  text-decoration: none;
-  color: #fff;
-  letter-spacing: 0;
-  background-color: #0085ff;
-  height: 43px;
-  width: 100%;
-  box-sizing: border-box;
-  border: none;
-}
+
 
 .layout {
   display: flex;
