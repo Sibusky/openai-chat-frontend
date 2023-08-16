@@ -11,8 +11,6 @@ export function Form({ handleFunction, isFetching, className, buttonText, button
     resetForm();
   }
 
-  console.log(errors);
-
   return (
     <form id={`${className}-form`} onSubmit={handleSubmit}>
       <fieldset>

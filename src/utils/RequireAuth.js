@@ -5,7 +5,7 @@ export function RequireAuth({ children, isLoggedIn }) {
   let location = useLocation();
 
   if (!isLoggedIn) {
-    return <Navigate to='/start' state={{ from: location }} replace />;
+    return <Navigate to='/' state={{ from: location }} replace />;
   }
 
   return children;

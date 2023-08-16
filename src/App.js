@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { Layout } from './pages/layout';
-import { Main } from './pages/main';
 import { Start } from './pages/start';
 import { Chat } from './pages/chat';
 import { PageNotFound } from './pages/page-not-found';
@@ -138,9 +137,8 @@ function App() {
           <Route
             element={<Layout handleLogOut={handleLogOut} currentUser={currentUser} isLoggedIn={isLoggedIn} />}
           >
-            <Route index element={<Main isFetchin={isFetching} isLoggedIn={isLoggedIn} />} />
             <Route
-              path='start'
+              index
               element={
                 <Start
                   handleLogin={handleLogin}
