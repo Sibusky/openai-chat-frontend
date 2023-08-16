@@ -9,7 +9,7 @@ class Auth {
   }
 
   register(name, password) {
-    return fetch(`${this._baseUrl}/start`, {
+    return fetch(`${this._baseUrl}/`, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
@@ -20,7 +20,7 @@ class Auth {
   }
 
   authorize(name, password) {
-    return fetch(`${this._baseUrl}/start`, {
+    return fetch(`${this._baseUrl}/`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -31,7 +31,7 @@ class Auth {
   }
 
   getCurrentUser(token) {
-    return fetch(`${this._baseUrl}/start/me`, {
+    return fetch(`${this._baseUrl}/me`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -42,6 +42,7 @@ class Auth {
 }
 
 export const auth = new Auth({
-  baseUrl: 'https://openai-chat-backend.onrender.com',
+  // baseUrl: 'https://openai-chat-backend.onrender.com',
+  baseUrl: 'http://localhost:3001',
   headers: {},
 });
