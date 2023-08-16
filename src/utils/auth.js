@@ -42,7 +42,7 @@ class Auth {
 }
 
 export const auth = new Auth({
-  // baseUrl: 'https://openai-chat-backend.onrender.com',
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'https://openai-chat-backend.onrender.com',
+  // baseUrl: 'http://localhost:3001',
   headers: {},
 });

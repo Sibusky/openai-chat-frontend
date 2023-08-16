@@ -40,7 +40,7 @@ class MessagesApi {
 }
 
 export const messagesApi = new MessagesApi({
-  // baseUrl: 'https://openai-chat-backend.onrender.com',
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'https://openai-chat-backend.onrender.com',
+  // baseUrl: 'http://localhost:3001',
   headers: {},
 });
