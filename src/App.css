@@ -28,8 +28,14 @@ ul {
 }
 
 form {
-  width: 366px;
+  width: 94%;
   margin: 24px 0;
+}
+
+@media screen and (min-width: 500px) {
+  form {
+    width: 460px;
+  }
 }
 
 fieldset {
@@ -112,7 +118,14 @@ h4 {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 390px;
+  /* width: 320px; */
+  width: 100%;
+}
+
+@media screen and (min-width: 769px) {
+  .layout {
+    width: 768px;
+  }
 }
 
 .text {
@@ -137,6 +150,7 @@ h4 {
   font-weight: 400;
   font-size: 20px;
   line-height: normal;
+  text-align: center;
 }
 
 .white {
@@ -169,22 +183,19 @@ h4 {
 }
 
 .chat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   height: calc(100vh - 95px - 203px);
   overflow: scroll;
+  width: 94%;
 }
 
-.message {
-  width: 366px;
-  box-sizing: border-box;
-  padding: 24px;
-  margin-top: 12px;
-  background-color: #f5f5f5;
+.chat-list {
+  width: 100%;
 }
 
-.message li {
-  margin-bottom: 12px;
-}
-
-.message li:last-of-type {
-  margin-bottom: 0;
+.request-form {
+  width: 94%;
 }
