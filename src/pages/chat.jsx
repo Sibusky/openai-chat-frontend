@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Container } from '../components/container';
 import { Button } from '../components/button';
 import { Message } from '../components/message';
@@ -7,6 +7,14 @@ import { Spinner } from '../components/spinner';
 
 export function Chat({ messages, sendRequest, isFetching, deleteMessage }) {
   const { values, isValid, handleChange, resetForm } = useFormWithValidation();
+
+  const chatListRef = useRef(null);
+
+  useEffect(() => {
+    if (chatListRef.current) {
+      chatListRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }, [messages]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,7 +29,7 @@ export function Chat({ messages, sendRequest, isFetching, deleteMessage }) {
   }
 
   return (
-    <Container>
+    <Container isExpanded={true}>
       {isFetching ? <Spinner /> : null}
       <div className='chat-container'>
         {messages.length ? (
@@ -36,6 +44,7 @@ export function Chat({ messages, sendRequest, isFetching, deleteMessage }) {
                 deleteMessage={deleteMessage}
               />
             ))}
+            <li ref={chatListRef} />
           </ul>
         ) : (
           <p className='empty-text text'>Your chat is empty. Send your first message to start a chat.</p>

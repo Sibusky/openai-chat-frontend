@@ -1,3 +1,20 @@
+.message {
+  /* width: 366px; */
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px;
+  margin-top: 12px;
+  background-color: #f5f5f5;
+}
+
+.message li {
+  margin-bottom: 12px;
+}
+
+.message li:last-of-type {
+  margin-bottom: 0;
+}
+
 .message p {
-    white-space: break-spaces;
+  white-space: break-spaces;
 }

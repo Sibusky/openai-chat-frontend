@@ -13,7 +13,7 @@ export function Start({ handleLogin, handleRegister, isFetching, isLoggedIn }) {
   }
 
   return (
-    <Container>
+    <Container isExpanded={false}>
       {isFetching ? <Spinner /> : null}
       <img src={image} alt='Boy and girl' />
       <Form
