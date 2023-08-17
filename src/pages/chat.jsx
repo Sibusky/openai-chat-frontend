@@ -21,7 +21,7 @@ export function Chat({ messages, sendRequest, isFetching, deleteMessage }) {
   }
 
   return (
-    <Container>
+    <Container isExpanded={true}>
       {isFetching ? <Spinner /> : null}
       <div className='chat-container'>
         {messages.length ? (
