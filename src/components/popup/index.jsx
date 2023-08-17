@@ -4,7 +4,7 @@ import './styles.css';
 
 export function Popup({ isPopupOpened, isSuccess, popupText, handleClose }) {
   return (
-    <div className={`popup ${isPopupOpened ? 'popup_opened' : ''}`}>
+    <div className={`popup ${isPopupOpened ? 'popup_opened' : ''}`} onClick={handleClose}>
       <form
         className='popup-container'
         onSubmit={(e) => {
