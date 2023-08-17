@@ -14,6 +14,12 @@ export function Chat({ messages, sendRequest, isFetching, deleteMessage }) {
     resetForm();
   }
 
+  function handleKeyDown(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      handleSubmit(e);
+    }
+  }
+
   return (
     <Container>
       {isFetching ? <Spinner /> : null}
@@ -47,6 +53,7 @@ export function Chat({ messages, sendRequest, isFetching, deleteMessage }) {
           placeholder='Type your message here...'
           name='requestInput'
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
           value={values.requestInput ?? ''}
         />
         <Button text='Send' type='submit' isDisabled={!isValid} />
