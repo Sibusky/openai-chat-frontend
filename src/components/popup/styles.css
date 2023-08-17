@@ -1,0 +1,34 @@
+.popup {
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+}
+
+.popup_opened {
+  display: flex;
+}
+
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 300px;
+  background-color: #fff;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+.popup-container span {
+  font-size: 30px;
+}
+
+.popup-container h4 {
+    text-align: center;
+  }

@@ -10,12 +10,16 @@ import { messagesApi } from './utils/api';
 import { RequireAuth } from './utils/RequireAuth';
 
 import './App.css';
+import { Popup } from './components/popup';
 
 function App() {
   const [isFetching, setIsFetching] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({ _id: '', name: '' });
   const [messages, setMessages] = useState([]);
+  const [isPopupOpened, setIsPopupOpened] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [popupText, setPopupText] = useState('');
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -87,8 +91,14 @@ function App() {
           if (err === 401) {
             handleLogOut();
             setIsFetching(false);
+            openPopup();
+            setIsSuccess(false);
+            setPopupText('Check token error. Please try one more time.');
           }
           setIsFetching(false);
+          openPopup();
+          setIsSuccess(false);
+          setPopupText('Check token error. Please try one more time.');
         });
     } else {
       handleLogOut();
@@ -113,6 +123,9 @@ function App() {
       .catch((err) => {
         console.log(`Login error: ${err}`);
         setIsFetching(false);
+        openPopup();
+        setIsSuccess(false);
+        setPopupText('Login error. User name or password is incorrect.');
       });
   }
 
@@ -123,11 +136,33 @@ function App() {
       .then(() => {
         handleLogin({ name, password });
         setIsFetching(false);
+        openPopup();
+        setIsSuccess(true);
+        setPopupText('Registration was successfull. You will be redirected to chat page.');
       })
       .catch((err) => {
         console.log(`Registration error: ${err}`);
         setIsFetching(false);
+        openPopup();
+        setIsSuccess(false);
+        if (err === 409) {
+          setPopupText(
+            `Registration error. User with name "${name}" already exists. Please, use another name.`
+          );
+        } else {
+          setPopupText(`Registration error. Please, check the data you've provided.`);
+        }
       });
+  }
+
+  function openPopup() {
+    setIsPopupOpened(true);
+  }
+
+  function closePopup() {
+    setIsPopupOpened(false);
+    setIsSuccess(false);
+    setPopupText('');
   }
 
   return (
@@ -165,6 +200,12 @@ function App() {
         </Route>
         <Route path='*' element={<PageNotFound />} />
       </Routes>
+      <Popup
+        isPopupOpened={isPopupOpened}
+        isSuccess={isSuccess}
+        popupText={popupText}
+        handleClose={closePopup}
+      />
     </div>
   );
 }
